@@ -54,12 +54,13 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const CounterPage(),
-            ),
-          );
+          changeTitle();
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (_) => const CounterPage(),
+          //   ),
+          // );
         },
         child: const Icon(Icons.add),
       ),

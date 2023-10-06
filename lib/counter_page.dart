@@ -80,18 +80,11 @@ class _CounterPageState extends State<CounterPage> {
             },
             FutureBuilder(
               future: getMessage('Flutter Talk'),
-              builder: (context, snapshot) {
-                final data = snapshot.data;
-
-                if (data != null) {
-                  return Text(data);
-                }
-
-                if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-
-                return const CircularProgressIndicator.adaptive();
+              builder: (context, snapshot) => switch (snapshot) {
+                AsyncSnapshot(hasData: true, data: final data) => Text('$data'),
+                AsyncSnapshot(hasError: true, error: final error) =>
+                  Text('$error'),
+                _ => const CircularProgressIndicator.adaptive()
               },
             ),
           ],
